@@ -15,7 +15,7 @@ Interested in more information about the assignment? Click [here](https://drive.
 
 
 ## Documentation
-All the documentation can be found in the [Documentation](https://github.com/nicklasanielsen/TrackBiz-Website/blob/master/Documentation/) folder.
+All the documentation can be found in the [documentation](https://github.com/nicklasanielsen/TrackBiz-Website/blob/master/documentation/) folder.
 
 ## Collaborators
 
