@@ -1,9 +1,29 @@
-ul.header {
+.header {
+  left: 0px;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #40628e;
+  box-shadow: 10px 6px 10px #3a5bff29;
+}
+
+.headerLogo {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.headerButtons {
+  padding-top: 60px;
+}
+
+.homeHeader {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.homeParagraph {
+  padding-bottom: 10px;
 }
 
 ul.header li {
@@ -12,7 +32,7 @@ ul.header li {
 
 ul.header li a {
   display: block;
-  color: white;
+  color: #373a3c;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -22,6 +42,10 @@ ul.header li a:hover:not(.active) {
   background-color: #111;
 }
 
-.active {
-  background-color: #4caf50;
+h2 {
+  color: #818a91;
+}
+
+p {
+  color: #777777;
 }

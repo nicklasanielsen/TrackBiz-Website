@@ -1,81 +1,19 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { NavLink, Redirect } from "react-router-dom";
-import facade from "../facade";
+import { Col, Container, Nav, Row } from "react-bootstrap";
+import { Redirect, NavLink } from "react-router-dom";
+import Logo from "../Icons/Logo.js";
 
-export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
-  const performLogout = () => {
-    setLoggedIn(false);
-    facade.logout();
-
-    return <Redirect to="/fanclub/login" />;
-  };
-
+export default function Header() {
   return (
     <ul className="header">
       <Container>
         <Row>
-          <Col md={8}>
-            <li>
-              <NavLink exact activeClassName="active" to="/CA3/">
-                Home
-              </NavLink>
-            </li>
-            {isLoggedIn && (
-              <>
-                <li>
-                  <NavLink activeClassName="active" to="/CA3/jokes">
-                    Jokes
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="active" to="/CA3/info/user">
-                    Find User
-                  </NavLink>
-                </li>
-                {isAdmin && (
-                  <li>
-                    <NavLink activeClassName="active" to="/CA3/info/users">
-                      All Users
-                    </NavLink>
-                  </li>
-                )}
-              </>
-            )}
+          <Col md={8} className="headerLogo">
+            <NavLink exact activeClassName="active" to="/TrackBiz/">
+              <Logo height="100px" />
+            </NavLink>
           </Col>
-          <Col md={4}>
-            {isLoggedIn ? (
-              <>
-                <li>
-                  <NavLink activeClassName="active" to="/CA3/profile">
-                    My Profile
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    activeClassName=""
-                    to="/CA3/fanclub/login"
-                    onClick={performLogout}
-                  >
-                    Logout
-                  </NavLink>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <NavLink activeClassName="active" to="/CA3/fanclub/login">
-                    Login
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="active" to="/CA3/fanclub/register">
-                    Join Our Fan Club!
-                  </NavLink>
-                </li>
-              </>
-            )}
-          </Col>
+          <Col md={4} className="headerButtons"></Col>
         </Row>
       </Container>
     </ul>
