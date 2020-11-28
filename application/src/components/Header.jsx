@@ -1,6 +1,6 @@
 import React from "react";
-import { Col, Container, Nav, Row } from "react-bootstrap";
-import { Redirect, NavLink } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import Logo from "../Icons/Logo.js";
 
 export default function Header() {
