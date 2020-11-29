@@ -9,21 +9,21 @@
 }
 
 .headerLogo {
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .headerButtons {
-  padding-top: 60px;
+  padding-top: 5.5%;
 }
 
 .homeHeader {
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 2%;
+  padding-bottom: 1%;
 }
 
 .homeParagraph {
-  padding-bottom: 10px;
+  padding-bottom: 1.5%;
 }
 
 ul.header li {
@@ -46,6 +46,71 @@ h2 {
   color: #818a91;
 }
 
+h5 {
+  color: #777777;
+}
+
 p {
+  color: #777777;
+}
+
+.formArea {
+  padding-right: 2.5%;
+}
+
+.statusArea {
+  padding-left: 1.5%;
+}
+
+.statusTextArea {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 11px;
+  opacity: 1;
+}
+
+.statusAreaHeader {
+  padding-right: 54%;
+}
+
+.statusLogo {
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+}
+
+.statusCol1 {
+  padding-top: 2.5%;
+  font-size: 14px;
+  color: #777777;
+}
+
+.statusCol2 {
+  padding-top: 2.5%;
+  font-size: 14px;
+  text-align: right;
+  color: #777777;
+}
+
+.historyHeader {
+  padding-right: 59.5%;
+  padding-top: 1%;
+}
+
+.historyArea {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 11px;
+  opacity: 1;
+}
+
+.historyCol1 {
+  font-size: 14px;
+  color: #777777;
+  text-align: left;
+}
+
+.historyCol2 {
+  font-size: 14px;
+  text-align: right;
   color: #777777;
 }
