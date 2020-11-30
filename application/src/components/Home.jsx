@@ -1,18 +1,18 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Alert } from "react-bootstrap";
 import facade from "../facade";
 
 export default function Home() {
   const [getCouriers, setCouriers] = useState("Loading..");
   const [error, setError] = useState(null);
-  const [trackingNumber, setTrackingNumber] = useState();
+  const [trackingNumber, setTrackingNumber] = useState("");
   const [courier, setCourier] = useState();
   const [trackInfo, setTrackInfo] = useState();
 
-  useEffect(() => {
+  const importCouriers = useCallback(() => {
     facade
       .getCouriers()
       .then((couriers) => {
@@ -32,9 +32,15 @@ export default function Home() {
           err.fullError.then((e) => setError(e.message));
         }
 
-        setError("An error occurred while processing your request.");
+        setError(
+          "An error occurred while loading the list of supported couriers."
+        );
       });
-  }, [setCouriers, courier]);
+  }, [setCouriers]);
+
+  useEffect(() => {
+    importCouriers();
+  }, [importCouriers]);
 
   const perfromTrack = (event) => {
     event.preventDefault();
