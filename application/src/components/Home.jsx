@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import { useEffect, useState, useCallback } from "react";
 import { Alert } from "react-bootstrap";
 import facade from "../facade";
@@ -11,6 +12,7 @@ export default function Home() {
   const [trackingNumber, setTrackingNumber] = useState("");
   const [courier, setCourier] = useState();
   const [trackInfo, setTrackInfo] = useState();
+  const [trackingButton, setTrackingButton] = useState("Track");
 
   const importCouriers = useCallback(() => {
     facade
@@ -48,6 +50,19 @@ export default function Home() {
     setTrackInfo(null);
 
     if (trackingNumber !== "") {
+      setTrackingButton(
+        <>
+          <Spinner
+            as="span"
+            animation="grow"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />{" "}
+          Tracking...
+        </>
+      );
+
       facade
         .getTrackInfo(courier.Choice, trackingNumber.trackingNumber)
         .then((data) =>
@@ -141,6 +156,9 @@ export default function Home() {
           }
 
           setError("An error occurred while processing your request.");
+        })
+        .then(() => {
+          setTrackingButton("Track");
         });
     } else {
       setError("Tracking number is missing!");
@@ -206,7 +224,7 @@ export default function Home() {
                 </Form.Group>
                 <Form.Group as={Col} controlId="formSubmit" xl={2}>
                   <Button type="submit" className="" onClick={perfromTrack}>
-                    Submit
+                    {trackingButton}
                   </Button>
                 </Form.Group>
               </Form.Row>
