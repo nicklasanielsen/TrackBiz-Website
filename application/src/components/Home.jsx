@@ -23,7 +23,6 @@ export default function Home() {
           }),
         ]);
         setCourier({
-          ...courier,
           Choice: "Any",
         });
       })
