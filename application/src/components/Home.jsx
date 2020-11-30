@@ -110,13 +110,21 @@ export default function Home() {
                               <span className="infoStatus">
                                 {element.status}
                               </span>
-                              <br></br>
+                              <br />
                               <span>{element.description}</span>
+                              <br />
+                              <br />
+                              <span className="infoStatus">Updated at: </span>
+                              <br />
+                              <span>
+                                {element.country}, {element.city}
+                              </span>
                             </Col>
                             <Col md={4} className="statusCol2">
                               {element.timeStamp}
                             </Col>
                           </Row>
+                          <br />
                         </>
                       );
                     })}
