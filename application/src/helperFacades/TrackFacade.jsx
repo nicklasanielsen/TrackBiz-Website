@@ -23,23 +23,23 @@ function TrackFacade() {
 
   const getStatusLogo = (status) => {
     if (status === "Info Received") {
-      return <InfoReceive />;
+      return <InfoReceive width="100px" height="100px" />;
     } else if (status === "In Transit") {
-      return <InTransit />;
+      return <InTransit width="100px" height="100px" />;
     } else if (status === "Out for Delivery") {
-      return <OutForDelivery />;
+      return <OutForDelivery width="100px" height="100px" />;
     } else if (status === "Failed Attempt") {
-      return <Attemptfail />;
+      return <Attemptfail width="100px" height="100px" />;
     } else if (status === "Delivered") {
-      return <Delivered />;
+      return <Delivered width="100px" height="100px" />;
     } else if (status === "Available for Pickup") {
-      return <AvailableForPickup />;
+      return <AvailableForPickup width="100px" height="100px" />;
     } else if (status === "Exception") {
-      return <Exception />;
+      return <Exception width="100px" height="100px" />;
     } else if (status === "Expired") {
-      return <Expired />;
+      return <Expired width="100px" height="100px" />;
     } else if (status === "Pending") {
-      return <Pending />;
+      return <Pending width="100px" height="100px" />;
     }
   };
 

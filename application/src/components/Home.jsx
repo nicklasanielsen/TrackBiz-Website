@@ -10,6 +10,7 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [trackingNumber, setTrackingNumber] = useState();
   const [courier, setCourier] = useState();
+  const [trackInfo, setTrackInfo] = useState();
 
   useEffect(() => {
     facade
@@ -21,6 +22,10 @@ export default function Home() {
             return <option key={courier.name}>{courier.name}</option>;
           }),
         ]);
+        setCourier({
+          ...courier,
+          Choice: "Any",
+        });
       })
       .catch((err) => {
         if (err.status) {
@@ -29,46 +34,93 @@ export default function Home() {
 
         setError("An error occurred while processing your request.");
       });
-  }, [setCouriers]);
+  }, [setCouriers, courier]);
 
   const perfromTrack = (event) => {
     event.preventDefault();
 
     setError(null);
+    setTrackInfo(null);
 
     if (trackingNumber !== "") {
       facade
         .getTrackInfo(courier.Choice, trackingNumber.trackingNumber)
         .then((data) =>
-          data.map((info) => {
-            return (
-              <>
-                <Row className="statusHeader">
-                  <h5>Current Status</h5>
-                </Row>
-                <Row>
+          setTrackInfo(
+            data.map((info) => {
+              return (
+                <>
                   <Col md={2}></Col>
-                  <Col md={8}>
-                    <Row className="statusTextArea">
-                      <Col className="statusLogo">
+                  <Col md={10}>
+                    <Row className="statusHeader justify-content-md-center">
+                      <h5>Current Status</h5>
+                    </Row>
+                    <Row className="statusTextArea justify-content-md-center">
+                      <Col md={2} className="statusLogo">
                         {facade.getStatusLogo(info.currentEvent.status)}
                       </Col>
-                      <Col className="statusCol1">
-                        <span>{info.currentEvent.status}</span>
+                      <Col md={6} className="statusCol1">
+                        <span className="infoStatus">
+                          {info.courier} - {info.consignor}
+                        </span>
+                        <br />
+                        <br />
+                        <span className="infoStatus">
+                          {info.currentEvent.status}
+                        </span>
+                        <br />
+                        <span>{info.currentEvent.description}</span>
+                        <br />
+                        <br />
+                        <span className="infoStatus">Origin: </span>
+                        <span>
+                          {info.originCountry}, {info.originCity}
+                        </span>
+                        <br />
+                        <span className="infoStatus">Destination: </span>
+                        <span>
+                          {info.destinationCountry}, {info.destinationCity}
+                        </span>
                       </Col>
-                      <Col className="statusCol2">
+                      <Col md={4} className="statusCol2">
                         <span>{info.currentEvent.timeStamp}</span>
+                        <br />
+                        <br />
+                        <span>{info.volume} m³</span>
+                        <br />
+                        <span>{info.weight} kg</span>
                       </Col>
                     </Row>
+                    <Row className="historyHeader justify-content-md-center">
+                      <h5>History</h5>
+                    </Row>
+                    {info.events.map((element) => {
+                      return (
+                        <>
+                          <Row className="historyArea justify-content-md-center">
+                            <Col md={2} className="statusLogo">
+                              {facade.getStatusLogo(element.status)}
+                            </Col>
+                            <Col md={6} className="statusCol1">
+                              <span className="infoStatus">
+                                {element.status}
+                              </span>
+                              <br></br>
+                              <span>{element.description}</span>
+                            </Col>
+                            <Col md={4} className="statusCol2">
+                              {element.timeStamp}
+                            </Col>
+                          </Row>
+                        </>
+                      );
+                    })}
                   </Col>
-                  <Col md={2}></Col>
-                </Row>
-                <Row>
-                  <h5 className="historyHeader">History</h5>
-                </Row>
-              </>
-            );
-          })
+                  <Col md={0}></Col>
+                </>
+              );
+            })
+          )
         )
         .catch((err) => {
           if (err.status) {
@@ -114,7 +166,6 @@ export default function Home() {
         <Row className="formArea">
           <Col md={2}></Col>
           <Col md={9}>
-            {error && <Alert variant="danger">{error}</Alert>}
             <Form>
               <Form.Row>
                 <Form.Group as={Col} xl={2}>
@@ -147,6 +198,8 @@ export default function Home() {
                 </Form.Group>
               </Form.Row>
             </Form>
+            {error && <Alert variant="danger">{error}</Alert>}
+            {trackInfo}
           </Col>
           <Col md={1}></Col>
         </Row>
