@@ -39,7 +39,7 @@ ul.header li a {
 }
 
 ul.header li a:hover:not(.active) {
-  background-color: #111;
+  background-color: #b82727;
 }
 
 h2 {
@@ -101,5 +101,19 @@ p {
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
   border-radius: 11px;
+  opacity: 1;
+}
+
+.login {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+.register {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
   opacity: 1;
 }
