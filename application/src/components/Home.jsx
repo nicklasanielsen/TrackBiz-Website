@@ -13,7 +13,6 @@ export default function Home({ isLoggedIn }) {
   const [courier, setCourier] = useState();
   const [trackInfo, setTrackInfo] = useState();
   const [trackingButton, setTrackingButton] = useState("Track");
-  const [savingButton, setSavingButton] = useState("Save shipment");
 
   const importCouriers = useCallback(() => {
     facade
@@ -43,22 +42,6 @@ export default function Home({ isLoggedIn }) {
   useEffect(() => {
     importCouriers();
   }, [importCouriers]);
-
-  const addShipment = (courier, trackingNumber) => {
-    setSavingButton(
-      <>
-        <Spinner
-          as="span"
-          animation="grow"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />{" "}
-        Saving...
-      </>
-    );
-    facade.addShipment(courier, trackingNumber);
-  };
 
   const perfromTrack = (event) => {
     event.preventDefault();
@@ -92,19 +75,6 @@ export default function Home({ isLoggedIn }) {
                     <Row className=" justify-content-md-center">
                       <Col>
                         <h5>Current Status</h5>
-                      </Col>
-                      <Col></Col>
-                      <Col></Col>
-                      <Col className="saveButton justify-content-md-right">
-                        {isLoggedIn && (
-                          <Button
-                            onClick={function () {
-                              addShipment(info.courier, info.trackingNumber);
-                            }}
-                          >
-                            {savingButton}
-                          </Button>
-                        )}
                       </Col>
                     </Row>
                     <Row className="statusTextArea justify-content-md-center">
@@ -224,7 +194,6 @@ export default function Home({ isLoggedIn }) {
         })
         .then(() => {
           setTrackingButton("Track");
-          setSavingButton("Save shipment");
         });
     } else {
       setError("Tracking number is missing!");
