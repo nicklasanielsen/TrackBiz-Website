@@ -1,7 +1,6 @@
 import facade from "../facade";
 import React, { useState, useCallback, useEffect } from "react";
 import { Col, Container, Row, Button, Collapse, Alert } from "react-bootstrap";
-import { InfoReceive } from "../Icons/shippingIcons";
 
 export default function TrackedShipments() {
   const [shipments, setShipments] = useState("Loading...");
