@@ -45,7 +45,7 @@ function App() {
       <Container>
         <Switch>
           <Route exact path="/TrackBiz/">
-            <Home />
+            <Home isLoggedIn={isLoggedIn} />
           </Route>
           <PrivateRoute
             path="/TrackBiz/profile"

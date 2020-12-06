@@ -6,13 +6,14 @@ import { useEffect, useState, useCallback } from "react";
 import { Alert } from "react-bootstrap";
 import facade from "../facade";
 
-export default function Home() {
+export default function Home({ isLoggedIn }) {
   const [getCouriers, setCouriers] = useState("Loading..");
   const [error, setError] = useState(null);
   const [trackingNumber, setTrackingNumber] = useState("");
   const [courier, setCourier] = useState();
   const [trackInfo, setTrackInfo] = useState();
   const [trackingButton, setTrackingButton] = useState("Track");
+  const [savingButton, setSavingButton] = useState("Save shipment");
 
   const importCouriers = useCallback(() => {
     facade
@@ -44,6 +45,18 @@ export default function Home() {
   }, [importCouriers]);
 
   const addShipment = (courier, trackingNumber) => {
+    setSavingButton(
+      <>
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />{" "}
+        Saving...
+      </>
+    );
     facade.addShipment(courier, trackingNumber);
   };
 
@@ -73,7 +86,7 @@ export default function Home() {
           setTrackInfo(
             data.map((info) => {
               return (
-                <>
+                <div key={info.trackingNumber + "_" + info.timeStamp}>
                   <Col md={2}></Col>
                   <Col md={10}>
                     <Row className=" justify-content-md-center">
@@ -83,14 +96,15 @@ export default function Home() {
                       <Col></Col>
                       <Col></Col>
                       <Col className="saveButton justify-content-md-right">
-                        <Button
-                          onClick={addShipment(
-                            info.courier,
-                            info.trackingNumber
-                          )}
-                        >
-                          Save shipment
-                        </Button>
+                        {isLoggedIn && (
+                          <Button
+                            onClick={function () {
+                              addShipment(info.courier, info.trackingNumber);
+                            }}
+                          >
+                            {savingButton}
+                          </Button>
+                        )}
                       </Col>
                     </Row>
                     <Row className="statusTextArea justify-content-md-center">
@@ -134,22 +148,55 @@ export default function Home() {
                     </Row>
                     {info.events.map((element) => {
                       return (
-                        <>
+                        <div
+                          key={
+                            info.trackingNumber +
+                            "_" +
+                            element.timeStamp +
+                            "_" +
+                            info.courier
+                          }
+                        >
                           <Row className="historyArea justify-content-md-center">
                             <Col md={2} className="statusLogo">
                               {facade.getStatusLogo(element.status)}
                             </Col>
                             <Col md={6} className="statusCol1">
-                              <span className="infoStatus">
+                              <span
+                                key={
+                                  element.trackingNumber +
+                                  "_" +
+                                  element.timeStamp
+                                }
+                                className="infoStatus"
+                              >
                                 {element.status}
                               </span>
                               <br />
-                              <span>{element.description}</span>
+                              <span
+                                key={
+                                  element.description +
+                                  "_" +
+                                  element.trackingNumber +
+                                  "_" +
+                                  element.timeStamp
+                                }
+                              >
+                                {element.description}
+                              </span>
                               <br />
                               <br />
                               <span className="infoStatus">Updated at: </span>
                               <br />
-                              <span>
+                              <span
+                                key={
+                                  element.country +
+                                  "_" +
+                                  element.trackingNumber +
+                                  "_" +
+                                  element.timeStamp
+                                }
+                              >
                                 {element.country}, {element.city}
                               </span>
                             </Col>
@@ -158,12 +205,12 @@ export default function Home() {
                             </Col>
                           </Row>
                           <br />
-                        </>
+                        </div>
                       );
                     })}
                   </Col>
                   <Col md={0}></Col>
-                </>
+                </div>
               );
             })
           )
@@ -177,6 +224,7 @@ export default function Home() {
         })
         .then(() => {
           setTrackingButton("Track");
+          setSavingButton("Save shipment");
         });
     } else {
       setError("Tracking number is missing!");
