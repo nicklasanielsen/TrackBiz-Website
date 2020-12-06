@@ -43,6 +43,10 @@ export default function Home() {
     importCouriers();
   }, [importCouriers]);
 
+  const addShipment = (courier, trackingNumber) => {
+    facade.addShipment(courier, trackingNumber);
+  };
+
   const perfromTrack = (event) => {
     event.preventDefault();
 
@@ -72,8 +76,22 @@ export default function Home() {
                 <>
                   <Col md={2}></Col>
                   <Col md={10}>
-                    <Row className="statusHeader justify-content-md-center">
-                      <h5>Current Status</h5>
+                    <Row className=" justify-content-md-center">
+                      <Col>
+                        <h5>Current Status</h5>
+                      </Col>
+                      <Col></Col>
+                      <Col></Col>
+                      <Col className="saveButton justify-content-md-right">
+                        <Button
+                          onClick={addShipment(
+                            info.courier,
+                            info.trackingNumber
+                          )}
+                        >
+                          Save shipment
+                        </Button>
+                      </Col>
                     </Row>
                     <Row className="statusTextArea justify-content-md-center">
                       <Col md={2} className="statusLogo">

@@ -25,12 +25,26 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
             {isLoggedIn ? (
               <>
                 <li>
-                  <NavLink activeClassName="active" to="/TrackBiz/profile">
+                  <NavLink
+                    className="myProfile"
+                    activeClassName="active"
+                    to="/TrackBiz/profile"
+                  >
                     My Profile
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
+                    className="myShipments"
+                    activeClassName=""
+                    to="/TrackBiz/member/Shipments"
+                  >
+                    My Shipments
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className="logout"
                     activeClassName=""
                     to="/TrackBiz/member/login"
                     onClick={performLogout}

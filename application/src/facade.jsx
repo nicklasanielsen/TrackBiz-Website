@@ -3,6 +3,7 @@ import courierFacade from "./helperFacades/CourierFacade";
 import authFacade from "./helperFacades/AuthFacade";
 import tokenFacade from "./helperFacades/TokenFacade";
 import userFacade from "./helperFacades/UserFacade";
+import shipmentFacade from "./helperFacades/ShipmentFacade";
 
 function Facade() {
   /** Auth related */
@@ -56,6 +57,23 @@ function Facade() {
     return userFacade.lookup(username, token);
   };
 
+  /** Shipment related */
+
+  const getShipmentList = () => {
+    let token = tokenFacade.getToken();
+    return shipmentFacade.shipment(token);
+  };
+
+  const untrackShipment = (courier, trackingNumber) => {
+    let token = tokenFacade.getToken();
+    return shipmentFacade.untrackShipment(courier, trackingNumber, token);
+  };
+
+  const addShipment = (courier, trackingNumber) => {
+    let token = tokenFacade.getToken();
+    return shipmentFacade.addShipment(courier, trackingNumber, token);
+  };
+
   return {
     /**Auth related */
     login,
@@ -71,9 +89,13 @@ function Facade() {
     getTrackInfo,
     getStatusLogo,
 
-    /**User related */
-
+    /** User related */
     getProfile,
+
+    /** Shipment related */
+    getShipmentList,
+    untrackShipment,
+    addShipment,
   };
 }
 

@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import facade from "./facade";
+import TrackedShipments from "./components/TrackedShipments";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(facade.isLoggedIn());
@@ -51,6 +52,11 @@ function App() {
             isLoggedIn={isLoggedIn}
             component={Profile}
           />
+          <PrivateRoute
+            path="/TrackBiz/member/Shipments"
+            isLoggedIn={isLoggedIn}
+            component={TrackedShipments}
+          ></PrivateRoute>
           <Route path="/TrackBiz/member/login/">
             <Login setLoggedIn={setLoggedIn} />
           </Route>
