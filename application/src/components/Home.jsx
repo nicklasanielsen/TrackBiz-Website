@@ -14,6 +14,10 @@ export default function Home({ isLoggedIn }) {
   const [trackInfo, setTrackInfo] = useState();
   const [trackingButton, setTrackingButton] = useState("Track");
 
+  const addShipment = (courier, trackingNumber) => {
+    facade.addShipment(courier, trackingNumber);
+  };
+
   const importCouriers = useCallback(() => {
     facade
       .getCouriers()
@@ -75,6 +79,19 @@ export default function Home({ isLoggedIn }) {
                     <Row className=" justify-content-md-center">
                       <Col>
                         <h5>Current Status</h5>
+                      </Col>
+                      <Col></Col>
+                      <Col></Col>
+                      <Col>
+                        {isLoggedIn && (
+                          <Button
+                            onClick={() =>
+                              addShipment(info.courier, info.trackingNumber)
+                            }
+                          >
+                            Save Shipment
+                          </Button>
+                        )}
                       </Col>
                     </Row>
                     <Row className="statusTextArea justify-content-md-center">
