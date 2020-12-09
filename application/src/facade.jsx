@@ -46,10 +46,16 @@ function Facade() {
 
   /** User related */
   const getProfile = () => {
-    let decodedToken = tokenFacade.getDecodedToken();
-    let username = decodedToken.username;
+    let token = tokenFacade.getToken();
+    return lookupUser(token);
+  };
 
-    return lookupUser(username);
+  const deleteUser = () => {
+    return userFacade.deleteUser();
+  };
+
+  const editUser = (username, firstname, lastname, password) => {
+    return userFacade.editUser(username, firstname, lastname, password);
   };
 
   const lookupUser = (username) => {
@@ -91,6 +97,8 @@ function Facade() {
 
     /** User related */
     getProfile,
+    deleteUser,
+    editUser,
 
     /** Shipment related */
     getShipmentList,
