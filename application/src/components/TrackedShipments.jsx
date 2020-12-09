@@ -35,6 +35,7 @@ export default function TrackedShipments() {
                       onClick={() =>
                         removeFromList(info.courier, info.trackingNumber)
                       }
+                      variant="danger"
                     >
                       Remove from list
                     </Button>
