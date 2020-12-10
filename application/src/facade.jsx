@@ -5,7 +5,6 @@ import tokenFacade from "./helperFacades/TokenFacade";
 import userFacade from "./helperFacades/UserFacade";
 import shipmentFacade from "./helperFacades/ShipmentFacade";
 import feedbackFacade from "./helperFacades/FeedbackFacade";
-import feedback from "./helperFacades/FeedbackFacade";
 
 function Facade() {
   /** Auth related */
