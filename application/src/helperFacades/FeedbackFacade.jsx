@@ -3,7 +3,8 @@ import tokenFacade from "./TokenFacade";
 
 function FeedbackFacade() {
   const getFeedback = () => {
-    const request = apiFacade.prepareRequest("GET", null, null);
+    const token = tokenFacade.getToken();
+    const request = apiFacade.prepareRequest("GET", null, token);
     return apiFacade.submitRequest("/feedback/courier/", request);
   };
 

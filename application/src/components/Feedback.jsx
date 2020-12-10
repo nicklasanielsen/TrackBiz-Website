@@ -63,6 +63,7 @@ export default function Feedback() {
                   id="formAI"
                   as="textarea"
                   placeholder="Enter any Additional information you want."
+                  maxLength={255}
                 />
               </Form.Group>
 

@@ -125,6 +125,13 @@ p {
   opacity: 1;
 }
 
+.proposals {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  opacity: 1;
+}
+
 .feedbackBox {
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;

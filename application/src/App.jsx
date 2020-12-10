@@ -13,9 +13,11 @@ import Register from "./components/Register";
 import facade from "./facade";
 import TrackedShipments from "./components/TrackedShipments";
 import Feedback from "./components/Feedback";
+import FeedbackAdmin from "./components/FeedbackAdmin";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(facade.isLoggedIn());
+  const [isAdmin, setAdmin] = useState(facade.isAdmin());
 
   const tokenValidationCheck = useCallback(() => {
     if (isLoggedIn) {
@@ -40,7 +42,7 @@ function App() {
       <Header
         isLoggedIn={isLoggedIn}
         setLoggedIn={setLoggedIn}
-        isAdmin={facade.isAdmin}
+        isAdmin={setAdmin}
       />
 
       <Container>
@@ -67,6 +69,12 @@ function App() {
           <Route path="/TrackBiz/feedback/">
             <Feedback />
           </Route>
+          <PrivateRoute
+            path="/TrackBiz/admin/feedback/"
+            isLoggedIn={isLoggedIn}
+            isAdmin={isAdmin}
+            component={FeedbackAdmin}
+          ></PrivateRoute>
           <Route>
             <NoRoute />
           </Route>

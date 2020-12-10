@@ -8,7 +8,9 @@ export default function TrackedShipments() {
   const [error, setError] = useState(null);
 
   const removeFromList = (courier, trackingNumber) => {
-    facade.untrackShipment(courier, trackingNumber);
+    facade.untrackShipment(courier, trackingNumber).then((data) => {
+      window.location.reload();
+    });
   };
 
   const importTrackedShipments = useCallback(() => {

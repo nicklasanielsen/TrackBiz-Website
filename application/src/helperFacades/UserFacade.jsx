@@ -9,7 +9,7 @@ function UserFacade() {
 
   const deleteUser = () => {
     let token = tokenFacade.getToken();
-    tokenFacade.removeToken(token);
+    tokenFacade.removeToken();
 
     const request = apiFacade.prepareRequest("DELETE", null, token);
     return apiFacade.submitRequest("/user", request);
