@@ -9,26 +9,26 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
     setLoggedIn(false);
     facade.logout();
 
-    return <Redirect to="/Member/login" />;
+    return <Redirect to="/Member/login/" />;
   };
 
   return (
     <ul className="header">
       <Container>
         <Row>
-          <Col md={8} className="headerLogo">
+          <Col md={7} className="headerLogo">
             <NavLink exact activeClassName="active" to="/TrackBiz/">
               <Logo height="100px" />
             </NavLink>
           </Col>
-          <Col md={4} className="headerButtons">
+          <Col md={5} className="headerButtons">
             {isLoggedIn ? (
               <>
                 <li>
                   <NavLink
                     className="myProfile"
                     activeClassName="active"
-                    to="/TrackBiz/profile"
+                    to="/TrackBiz/profile/"
                   >
                     My Profile
                   </NavLink>
@@ -37,7 +37,7 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
                   <NavLink
                     className="myShipments"
                     activeClassName=""
-                    to="/TrackBiz/member/Shipments"
+                    to="/TrackBiz/member/Shipments/"
                   >
                     My Shipments
                   </NavLink>
@@ -46,7 +46,7 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
                   <NavLink
                     className="logout"
                     activeClassName=""
-                    to="/TrackBiz/member/login"
+                    to="/TrackBiz/member/login/"
                     onClick={performLogout}
                   >
                     Logout
@@ -75,6 +75,15 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
                 </li>
               </>
             )}
+            <li>
+              <NavLink
+                className="feedback"
+                activeClassName="active"
+                to="/TrackBiz/feedback/"
+              >
+                Feedback
+              </NavLink>
+            </li>
           </Col>
         </Row>
       </Container>

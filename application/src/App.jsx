@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import facade from "./facade";
 import TrackedShipments from "./components/TrackedShipments";
+import Feedback from "./components/Feedback";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(facade.isLoggedIn());
@@ -48,12 +49,12 @@ function App() {
             <Home isLoggedIn={isLoggedIn} />
           </Route>
           <PrivateRoute
-            path="/TrackBiz/profile"
+            path="/TrackBiz/profile/"
             isLoggedIn={isLoggedIn}
             component={Profile}
           />
           <PrivateRoute
-            path="/TrackBiz/member/Shipments"
+            path="/TrackBiz/member/Shipments/"
             isLoggedIn={isLoggedIn}
             component={TrackedShipments}
           ></PrivateRoute>
@@ -62,6 +63,9 @@ function App() {
           </Route>
           <Route path="/TrackBiz/member/register/">
             <Register setLoggedIn={setLoggedIn} />
+          </Route>
+          <Route path="/TrackBiz/feedback/">
+            <Feedback />
           </Route>
           <Route>
             <NoRoute />

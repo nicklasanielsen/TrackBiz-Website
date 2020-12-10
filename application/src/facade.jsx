@@ -4,6 +4,8 @@ import authFacade from "./helperFacades/AuthFacade";
 import tokenFacade from "./helperFacades/TokenFacade";
 import userFacade from "./helperFacades/UserFacade";
 import shipmentFacade from "./helperFacades/ShipmentFacade";
+import feedbackFacade from "./helperFacades/FeedbackFacade";
+import feedback from "./helperFacades/FeedbackFacade";
 
 function Facade() {
   /** Auth related */
@@ -80,6 +82,19 @@ function Facade() {
     return shipmentFacade.addShipment(courier, trackingNumber, token);
   };
 
+  /**Feedback related */
+  const pullFeedback = () => {
+    return feedbackFacade.getFeedback();
+  };
+
+  const sendFeedback = (name, url, message) => {
+    return feedbackFacade.makeFeedback(name, url, message);
+  };
+
+  const deleteFeedback = (id) => {
+    return feedbackFacade.removeFeedback(id);
+  };
+
   return {
     /**Auth related */
     login,
@@ -104,6 +119,11 @@ function Facade() {
     getShipmentList,
     untrackShipment,
     addShipment,
+
+    /**Feedback related */
+    pullFeedback,
+    sendFeedback,
+    deleteFeedback,
   };
 }
 

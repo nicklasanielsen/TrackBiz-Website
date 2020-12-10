@@ -118,6 +118,22 @@ p {
   opacity: 1;
 }
 
+.feedback {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+.feedbackBox {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  opacity: 1;
+  padding-bottom: 2%;
+  padding-top: 2%;
+}
+
 .myProfile {
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dddddd;
@@ -137,4 +153,8 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+}
+
+.feedbackContainer {
+  padding-top: 1%;
 }
