@@ -109,6 +109,7 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+  font-size: 10px;
 }
 
 .register {
@@ -116,6 +117,7 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+  font-size: 10px;
 }
 
 .feedback {
@@ -123,6 +125,7 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+  font-size: 10px;
 }
 
 .proposals {
@@ -130,6 +133,7 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+  font-size: 10px;
 }
 
 .feedbackBox {
@@ -146,6 +150,7 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+  font-size: 10px;
 }
 
 .myShipments {
@@ -153,6 +158,7 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+  font-size: 10px;
 }
 
 .logout {
@@ -160,8 +166,14 @@ p {
   border: 1px solid #dddddd;
   border-radius: 10px;
   opacity: 1;
+  font-size: 10px;
 }
 
 .feedbackContainer {
   padding-top: 1%;
+}
+
+.show > .dropdown-menu {
+  display: block;
+  position: absolute;
 }

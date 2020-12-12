@@ -17,7 +17,6 @@ import FeedbackAdmin from "./components/FeedbackAdmin";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(facade.isLoggedIn());
-  const [isAdmin, setAdmin] = useState(facade.isAdmin());
 
   const tokenValidationCheck = useCallback(() => {
     if (isLoggedIn) {
@@ -42,7 +41,7 @@ function App() {
       <Header
         isLoggedIn={isLoggedIn}
         setLoggedIn={setLoggedIn}
-        isAdmin={setAdmin}
+        isAdmin={facade.isAdmin()}
       />
 
       <Container>
@@ -72,7 +71,7 @@ function App() {
           <PrivateRoute
             path="/TrackBiz/admin/feedback/"
             isLoggedIn={isLoggedIn}
-            isAdmin={isAdmin}
+            isAdmin={facade.isAdmin()}
             component={FeedbackAdmin}
           ></PrivateRoute>
           <Route>

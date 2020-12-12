@@ -3,7 +3,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { Col, Container, Row, Button, Collapse, Alert } from "react-bootstrap";
 
 export default function TrackedShipments() {
-  const [shipments, setShipments] = useState("Loading...");
+  const [shipments, setShipments] = useState("");
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(null);
 

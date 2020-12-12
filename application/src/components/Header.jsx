@@ -16,12 +16,12 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
     <ul className="header">
       <Container>
         <Row>
-          <Col md={6} className="headerLogo">
+          <Col md={7} className="headerLogo">
             <NavLink exact activeClassName="active" to="/TrackBiz/">
               <Logo height="100px" />
             </NavLink>
           </Col>
-          <Col md={6} className="headerButtons">
+          <Col md={5} className="headerButtons">
             {isLoggedIn ? (
               <>
                 <li>
@@ -59,7 +59,7 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
                       activeClassName="active"
                       to="/TrackBiz/admin/feedback/"
                     >
-                      Proposals
+                      Feedback
                     </NavLink>
                   </li>
                 )}
@@ -92,7 +92,7 @@ export default function Header({ isLoggedIn, setLoggedIn, isAdmin }) {
                 activeClassName="active"
                 to="/TrackBiz/feedback/"
               >
-                Feedback
+                Recommend Courier
               </NavLink>
             </li>
           </Col>
