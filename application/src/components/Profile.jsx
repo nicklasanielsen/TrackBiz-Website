@@ -5,7 +5,7 @@ import { Col, Row, Container, Button, Form } from "react-bootstrap";
 import tokenFacade from "../helperFacades/TokenFacade";
 
 export default function Profile() {
-  const [getProfile, setProfile] = useState("Loading..");
+  const [getProfile, setProfile] = useState("");
   const [error, setError] = useState(null);
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");

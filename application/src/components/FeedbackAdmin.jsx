@@ -4,7 +4,7 @@ import facade from "../facade";
 
 export default function FeedbackAdmin() {
   const [error, setError] = useState(null);
-  const [feedback, setFeedback] = useState("Loading...");
+  const [feedback, setFeedback] = useState("");
 
   const removeFromList = (id) => {
     facade.deleteFeedback(id).then(() => {

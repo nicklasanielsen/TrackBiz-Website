@@ -7,7 +7,7 @@ import { Alert } from "react-bootstrap";
 import facade from "../facade";
 
 export default function Home({ isLoggedIn }) {
-  const [getCouriers, setCouriers] = useState("Loading..");
+  const [getCouriers, setCouriers] = useState("");
   const [error, setError] = useState(null);
   const [trackingNumber, setTrackingNumber] = useState("");
   const [courier, setCourier] = useState();
