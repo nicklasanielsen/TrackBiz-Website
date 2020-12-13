@@ -9,7 +9,7 @@ function ShipmentFacade() {
   const untrackShipment = (courier, trackingNumber, token) => {
     const body = {
       courier: courier,
-      trackingNumber: trackingNumber,
+      shippingNumber: trackingNumber,
     };
     const request = apiFacade.prepareRequest("DELETE", body, token);
     return apiFacade.submitRequest("/user/shipments", request);
@@ -18,7 +18,7 @@ function ShipmentFacade() {
   const addShipment = (courier, trackingNumber, token) => {
     const body = {
       courier: courier,
-      trackingNumber: trackingNumber,
+      shippingNumber: trackingNumber,
     };
     const request = apiFacade.prepareRequest("POST", body, token);
     return apiFacade.submitRequest("/user/shipments", request);
