@@ -18,7 +18,7 @@ function ShipmentFacade() {
   const addShipment = (courier, trackingNumber, token) => {
     const body = {
       courier: courier,
-      shippingNumber: trackingNumber,
+      trackingNumber: trackingNumber,
     };
     const request = apiFacade.prepareRequest("POST", body, token);
     return apiFacade.submitRequest("/user/shipments", request);
